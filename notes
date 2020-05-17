@@ -70,14 +70,81 @@ classnames.
 - so I think I have the conditional rendering mixed up. the docs say that conditional rendering lets you create
 distinct components that encapsulate behaviour and then only render the components that are needed
 - so when conditional rendering, you so have to do render components
+- so storage object are not iterable one way to loop over them as an array. so we dont want to use the for in loop
+because of it loops ever all the property names in an object
+- Thats why we should use the normal for loop. it wont enumerate the prototype chain
 
+REACT ROUTER:
+- first we will need to set up the app to work with React Router. everything that gets rendered will need to go inside a
+<BrowserRouter> component. so for ours we will have to wrap the App component with the BrowserRouter component.
+- then inside our app component we add the switch element, these will ensure that only component is rendered at a time
+- then inside the <Switch> tags we place the <Route> tags, theses are the links between the components. We provide the
+<Route> tag with a path='/' and specify what component we want to render component={home}
+- for the home route we need to specify 'exact' this will make sure that the home page will only be matched if it is
+just the /
+
+- to make the app navigatble through clicks, we need to use the Link component and provide it with a 'to='/'' element
+that specifies where it is going.
+
+- so everything that gets rendered will go inside of BrowserRouter
+- so now that we have wrapped our App component in the BrowserRouter. we go inside the app and wrap everthing that
+we want to be part of the conditional rendering with a Switch component
+
+- so we encountered an problem with the react router component saying that we have passed it in the wrong type. So not
+exactly sure what is happening but I believe that we can fix this by creating a new home component and let it do
+the rendering there. So that worked
+
+- the next thing that I have to do is the component with all the saved images. we want to be able to loop thorugh all the
+images that are stored in the session storage. and then have those images be displayed in a material ui grid
+
+- so we want to have our saved component we got that. then we want a function that will loop thorugh the session storage
+and assign all those values to an array. and then we want to map over those to display a grid.
+- so now that we have the function that loops over the and returns an array of sessionStorage stuff we need to get a Grid
+going
+
+HOOKS:
+- during the initial render, the returned state is the same as the value passed as the first argument(initialState)
+- the setState function is used to update the state, it accepts a new state value and enqeues a re-render of the component
+- if the initial state is computed using the previous state, you can pass a function to setState. the function will
+recieve the previous value, and return an updated value. So for our project, we will be passing it a function to calculate
+the new state. if the update function returns the same value as the old state then the rerender will be skipped
+- useState does not automatically merge update objects, if we wan this we have to do it manually
+
+-so what we are going to do:
+we are going to create a state hook out of the sessionStorage array, then still pass that to the component. we have to
+pass down the value hook and the set value hook. then we have a function in the component and that fuction will be called
+when the delete button is pressed.
+- the function should change the hook and enqeue a rerendering which should make our image go away. hopefully.
+
+ARRAYS:
+-how to delete things from an array, we can use pop to remove items from the end of the array, use shift to to delete
+things from the beggining of the array.of the middle of the array using splice.the javascript filter method looks
+very promising for us.
+- so ya I think we are going to use the filter method
+- the filter method() creates a new array with all the elements that pass the test implemented by the provided function
+-so we provide filter with a funciton and then inside the funciton we have a test, if the values pass the test, then
+they are added to the new array 
+
+
+NPM:
+-the package.json file can be described as a manifest of your project that includes tha packages and applications
+it depends on, information about its unique source control, and specific metadata like the project's name, description
+and author.
+- the package.json file is always structured in JSON information
+- we can use npm init --yes to instantly initialize a Project
+- so when you install a module it gets stored into /node_modules folder
+- npm i is the same thing as npm install
+-so when we use --save that is adding the module as a dependency of our project as an entry in dependencies
+but the --save-dev will be used to save something to the dev dependencies
+
+- so when we just run npm install <module>, it will install that module in the existing node_modules directory.
 
 
 
 WHAT NEEDS TO BE DONE
 1) save and unsave functionality of the button conditional rendering (DONE)
-1.5) saves image tag to local or session storage.
-2) new page with all the saved dogs
+1.5) saves image tag to local or session storage. (DONE)
+2) new page with all the saved dogs, with delete functionality
 3) button to let you refresh new images
 4) tests
 5) launch

@@ -1,7 +1,10 @@
 import React from 'react';
+import { Switch,Route,Link} from 'react-router-dom';
 
-import Doggy from '../Doggy/doggy'
 import NavBar from '../NavBar/navBar'
+import Home from '../Home/home'
+import Saved from '../Saved/save'
+
 
 import './index.css'
 
@@ -18,21 +21,19 @@ class App extends React.Component{
       .then(data=> this.setState({messages:[data.message]}))
   }
 
-
-
   render(){
     const links = this.state.messages[0]
-    let dog;
-    if(links){
-      dog =<Doggy data={links} />
-    }else{
-      dog =<div>nothing here</div>
-    }
-
     return(
       <div>
       <NavBar />
-        {dog}
+      <Switch>
+        <Route path='/' exact >
+          <Home data={links}/>
+        </Route>
+        <Route path='/saved' exact >
+          <Saved/>
+        </Route>
+      </Switch>
       </div>
     )
   }
