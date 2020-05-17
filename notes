@@ -1,0 +1,87 @@
+SNAPSHOT TESTS WITH JEST:
+
+- how it works is that when the test is first run, the output is saved to a snapshot file and then when the test is ran
+in the future, the output is compared to the snapshot file. If the output matches the file, the test passes, if the
+output is different, then the test fails
+
+- snapshot testing is not for everything, but they are optimized for special cases
+- the are good for testing less clearly defined behaviour that may change often. the classic example of this and the main
+focus if descussion around Jest snapshots is for UI testing
+- they are able to catch the small suttle changes of the UI
+
+
+
+UNIT TESTS WITH ENZYME
+-first we have to download and install it, then we have to import { shallow  } from enzyme and we use shallow to
+to render the component
+- shallows renders the component without children components
+
+general guidelines for enzyme:
+1) always begin with a shallow test
+2) if componenntDidMount() or componentDidUpdate() should be tested, use mount()
+3)if you want to test component lifecycle and shildren behaviour use mount()
+4)if you want to test children rendering with less overhead than mount() and your are not interested in lifecycle methods
+use render()
+- make sure to keep the unit tests simple and maintainable, Otherwise you will have to refactor them once you
+change the components
+- so we need to import Enzyme and then configure to set up a new adapter
+- so when we are running npm test, we are using jest
+
+- when testing the describe method allows us to group together simular tests, it() acts simular to describe()
+-Enzyme makes testing React Components eaiser. we should install it and then set up a setupTests.js file in order to
+set up an adapter
+
+- so the shallow render will only test the component that it is rendering, not any component that was rendered within
+the component that is getting tested
+-shallow is a type of unit test for React. A unit test is a test specifically designed to only test one function.
+When we are testing functions that rely on other functions, we refer to such tests as integrated tests
+- you can do an integrated test with mount(), this is a full rendering test that takes the entire component tree and
+lifecycle methods into consideration
+
+- so right now I am setting up Material UI and I will create a NavBar and then the card components with the pictures
+
+
+MATERIAL UI:
+- the Roboto font is automaticall loaded by the material-ui
+- themes let us apply a consistent tone to the app, it allows us to customize all design aspects of the project in order
+to meet the specific needs of the business or brand. light and dark themes are avilable to choos from, by default,
+components use the light theme type. if the theme need to be customized you should use the ThemeProvider componenet in
+order to inject a theme into the application
+-if we are using the ThemeProvider, we should make sure that it is on a parent component so that it can pass the themes
+down to the children components.
+
+- so we are trying to change the deafult text of material ui. for this we have to use theming. When using theming we have
+to add a ThemeProvider to the top level of the app, so we import the ThemeProvider and then we wrap it around the
+componenet that we want to change and then we provide the ThemeProvider with a theme
+- you use themes to override styles
+
+GRID:
+-the grid component is based on a 12column grid layout.
+-it uses CSS Flexible Box module for high flexability
+- so we have a container grid and an item grid. The container is what is wrapped around the item grid
+
+CARD:
+- we can override styles with global classnames but you can also do that with a shorthand. That short hand is the
+withStyles() higher-order componenet and it is injecting classes property that gets used by the component. A higher
+order component transforms a component into another component.
+- however the way that the card component does things is not the same. the with styles is not a higher order component but
+it appears to be a method that returns an object with the appropriate properties that you can acccess and put in your
+classnames.
+- so I think I have the conditional rendering mixed up. the docs say that conditional rendering lets you create
+distinct components that encapsulate behaviour and then only render the components that are needed
+- so when conditional rendering, you so have to do render components
+
+
+
+
+WHAT NEEDS TO BE DONE
+1) save and unsave functionality of the button conditional rendering (DONE)
+1.5) saves image tag to local or session storage.
+2) new page with all the saved dogs
+3) button to let you refresh new images
+4) tests
+5) launch
+6) finish the react book
+7) start the express book
+8) build backend app
+9) build full stack app

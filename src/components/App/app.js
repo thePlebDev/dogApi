@@ -1,6 +1,9 @@
 import React from 'react';
 
 import Doggy from '../Doggy/doggy'
+import NavBar from '../NavBar/navBar'
+
+import './index.css'
 
 class App extends React.Component{
   constructor(props){
@@ -26,11 +29,9 @@ class App extends React.Component{
       dog =<div>nothing here</div>
     }
 
-
-  // links.map(item => console.log('printed'))
-
     return(
       <div>
+      <NavBar />
         {dog}
       </div>
     )

@@ -1,0 +1,12 @@
+
+SESSION STORAGE:
+- has access to a session storage object. where data in the localStorage doesn't expire data in sessionStorage is cleared
+when the page session ends
+- a page session last as long as the browser is open, and survives over and restores. opening a page in a new tab or
+window creates a new session. opening multiple tabs/windows with the same URL creates sessionStorage for each tab/window
+Closing a Tab/window end the session and clears objects in sessionStorage.
+
+- if we had an id value, it would be easy. we would just store the value of the imgage in session storage under the id
+property. Deleting would then be as easy as just deleting that
+- so I think the solution is to just store the image under the name of its self, then if we want to delete or call it we
+just call the image value.
