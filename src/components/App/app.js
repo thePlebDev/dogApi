@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch,Route,Link} from 'react-router-dom';
+import { Switch,Route} from 'react-router-dom';
 
 import NavBar from '../NavBar/navBar'
 import Home from '../Home/home'
@@ -13,9 +13,17 @@ class App extends React.Component{
     super(props)
 
     this.state = {messages:[]}
+
+
   }
 
   componentDidMount(){
+    fetch('https://dog.ceo/api/breeds/image/random/3')
+      .then(res=> res.json())
+      .then(data=> this.setState({messages:[data.message]}))
+  }
+
+  clickHandler=()=>{
     fetch('https://dog.ceo/api/breeds/image/random/3')
       .then(res=> res.json())
       .then(data=> this.setState({messages:[data.message]}))
@@ -28,7 +36,7 @@ class App extends React.Component{
       <NavBar />
       <Switch>
         <Route path='/' exact >
-          <Home data={links}/>
+          <Home data={links} clickFunc={this.clickHandler}/>
         </Route>
         <Route path='/saved' exact >
           <Saved/>

@@ -123,7 +123,7 @@ very promising for us.
 - so ya I think we are going to use the filter method
 - the filter method() creates a new array with all the elements that pass the test implemented by the provided function
 -so we provide filter with a funciton and then inside the funciton we have a test, if the values pass the test, then
-they are added to the new array 
+they are added to the new array
 
 
 NPM:
@@ -144,7 +144,7 @@ but the --save-dev will be used to save something to the dev dependencies
 WHAT NEEDS TO BE DONE
 1) save and unsave functionality of the button conditional rendering (DONE)
 1.5) saves image tag to local or session storage. (DONE)
-2) new page with all the saved dogs, with delete functionality
+2) new page with all the saved dogs, with delete functionality (DONE)
 3) button to let you refresh new images
 4) tests
 5) launch

@@ -25,7 +25,7 @@ const useStyles = makeStyles({
 
 
 const SavedDogs =({data,state,setState})=>{
-  console.log(state)
+
   const classes = useStyles();
 
   const handleClick=()=>{
